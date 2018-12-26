@@ -1,0 +1,2 @@
+class BodyAreasController < ApplicationController
+end
