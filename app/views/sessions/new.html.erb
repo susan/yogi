@@ -1,0 +1,10 @@
+<<h1>Login</h1>
+<%= form_with url: sessions_path, local: true do |f| %>
+
+<%=f.text_field :user_name, placeholder: 'Enter your user_name', class: 'form_control'%>
+<%=f.text_field :email, placeholder: 'and email', class: 'form_control'%>
+
+<%=f.text_field :password, placeholder: 'and password', class: 'form_control'%>
+
+<%=f.submit%>
+<% end %>
