@@ -1,7 +1,10 @@
 
-<h2><%=@routine.name %></h2>
+<h3><%=@routine.name %></h3>
 <ul>
 <% @routine.routine_poses.each do |routine_pose| %>
 <li><%= link_to routine_pose.yoga_pose.name, routine_pose.yoga_pose %></li>
 <% end %>
 </ul>
+
+<%= link_to "add poses", new_routine_pose_url(@routine.routine_poses) %>
+
