@@ -1,7 +1,11 @@
 class RoutinesController < ApplicationController
 
 	def index
-    @routines = Routine.all
+		if current_user
+      @routines = current_user.routines
+    else
+    @routines = []
+    end
 	end
 
 	def show
@@ -13,7 +17,7 @@ class RoutinesController < ApplicationController
   end
 
   def create
-  	@routine = Routine.create(params_routine)
+  	@routine = current_user.routines.create(params_routine)
     if @routine.save
 
   	  redirect_to @routine
@@ -46,11 +50,11 @@ class RoutinesController < ApplicationController
 	private
 
 	def find_routine
-    @routine = Routine.find(params[:id])
+    @routine = current_user.routines.find(params[:id])
 	end
 
 	def params_routine
-    params.require(:routine).permit(:name)
+    params.require(:routine).permit(:name, :id)
 	end
 
 end

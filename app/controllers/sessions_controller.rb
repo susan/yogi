@@ -4,15 +4,15 @@ class SessionsController < ApplicationController
   end
 
   def create
-   @user = Practitioner.find_by(user_name: params[:user_name])
+   user = User.find_by(user_name: params[:user_name])
 
-     if practitioner && practitioner.authenticate(params[:password])
+     if user && user.authenticate(params[:password])
      session[:user_id] = user.id
      #this is how we login
 
-     redirect_to root_path
+     redirect_to routines_url
     else
-       render “sessions/new”
+       redirect_to new_session_path
     end
   end
 

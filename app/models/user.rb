@@ -1,4 +1,4 @@
-class Practitioner < ApplicationRecord
+class User < ApplicationRecord
 	has_many :routines
 	before_save { self.email = email.downcase }
 	validates :user_name, presence: true, uniqueness:true, length: { maximum: 50 }

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  resources :practitioners, only: [:index, :show, :new, :create, :edit, :update]
+  root 'welcome#index'
+  resources :users, only: [:index, :show, :new, :create, :edit, :update]
   resources :sessions, only: [:new, :create, :destroy]
   resources :routine_poses
   resources :routines
