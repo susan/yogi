@@ -35,9 +35,10 @@ class RoutinesController < ApplicationController
 
   def update
   	find_routine
-  	if @routine.update(params_routine)
+  	@routine = current_user.routines
+    if @routine.update(params_routine)
 
-  	  redirect_to @routine
+    redirect_to @routine[0]
 
     else
       flash[:errors] = @routine.errors.full_messages
@@ -50,7 +51,7 @@ class RoutinesController < ApplicationController
     redirect_to @routines_path
   end
 
-end
+
 
   private
 
@@ -58,3 +59,8 @@ end
     @routine = Routine.find(params[:id])
   end
 
+  def params_routine
+    params.require(:routine).permit(:name, :user_id)
+   end
+
+end
