@@ -1,10 +1,18 @@
 
 <<h2>Yoga Poses</h2>
-<ul>
 
+<h4> Search by Body Area</h4>
+<h8> legs, backs, chest and shoulders, hips, abdominals or arms </h8>
+<%= form_tag(yoga_poses_path, method: :get) do %>
+<%= text_field_tag(:search, params[:searcb]) %>
+<%= submit_tag("Search") %>
+<% end %>
+
+
+<ul>
 <% @yoga_poses.each do |pose| %>
 <li>
-	<%= pose.name %>
+<%= link_to pose.name, yoga_pose_path(pose) %>
 </li>
 <% end %>
 

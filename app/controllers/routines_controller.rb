@@ -43,18 +43,18 @@ class RoutinesController < ApplicationController
       flash[:errors] = @routine.errors.full_messages
       render :edit
     end
-
   end
 
-
-	private
-
-	def find_routine
-    @routine = current_user.routines.find(params[:id])
-	end
-
-	def params_routine
-    params.require(:routine).permit(:name, :id)
-	end
+  def destroy
+    @routine.destroy
+    redirect_to @routines_path
+  end
 
 end
+
+  private
+
+  def find_routine
+    @routine = Routine.find(params[:id])
+  end
+

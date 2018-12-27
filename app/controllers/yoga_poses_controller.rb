@@ -1,7 +1,7 @@
 class YogaPosesController < ApplicationController
 
   def index
-    @yoga_poses = YogaPose.all
+    @yoga_poses = YogaPose.search(params[:search])
   end
 
   def show
@@ -38,7 +38,13 @@ class YogaPosesController < ApplicationController
   	end
   end
 
-
+# def index
+#   if params[:body_area]
+#     @yoga_pose = YogaPose.where('body_area LIKE ?', "%#{params[:body_area]}%")
+#   else
+#     @yoga_pose = YogaPose.all
+#   end
+# end
 
   private
 
@@ -47,7 +53,7 @@ class YogaPosesController < ApplicationController
   end
 
   def yoga_pose_params
-     params.require(:yoga_pose).permit(:name, :description, :img_url, :body_area_id)
+     params.require(:yoga_pose).permit(:name, :description, :img_url, :body_area_id, :search)
   end
 
 end

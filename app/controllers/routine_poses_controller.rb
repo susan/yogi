@@ -19,7 +19,19 @@ class RoutinePosesController < ApplicationController
 
   def edit
     find_routine_pose
+    @routines = current_user.routines
+    @yoga_poses = YogaPose.all
       render :edit
+  end
+
+  def update
+    find_routine_pose
+    @routine_pose.update(routine_pose_params)
+  end
+
+  def destroy
+    @routine_pose.destroy
+    redirect to routines_url
   end
 
 

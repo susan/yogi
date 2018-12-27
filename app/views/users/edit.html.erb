@@ -1,0 +1,8 @@
+<h1>Edit your profile</h1>
+<%= form_for(@user) do |f| %>
+
+<%=f.text_field :user_name, placeholder: 'Edit your username', class: 'form_control'%>
+<%=f.text_field :email, placeholder: 'Edit your email', class: 'form_control'%>
+
+<%=f.submit%>
+<% end %>
