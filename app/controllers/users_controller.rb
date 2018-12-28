@@ -10,17 +10,17 @@ class UsersController < ApplicationController
 
 
   def create
-  	@user = User.new(user_params)
+  	@user = User.new
 
-    #@user.user_name = params[:user][:user_name]
-  	#@user.email = params[:user][:email]
-    #@user.password = params[:user][:password]
+    @user.user_name = params[:user][:user_name]
+  	@user.email = params[:user][:email]
+    @user.password = params[:user][:password]
 
     if @user.save
       session[:user_id] = @user.id
       #grab user id and set it to session[:user_id] has to login
 
-      redirect_to root_path
+      redirect_to @user
 
     else
       flash[:errors] = @user.errors.full_messages

@@ -14,3 +14,7 @@
  *= require_self
  */
 @import "materialize";
+
+.input_field input[type=text]:focus{
+     border-bottom: 1px solid #aaa;
+}
