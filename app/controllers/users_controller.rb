@@ -10,44 +10,45 @@ class UsersController < ApplicationController
 
 
   def create
-  	@user = User.new
+  	@user = User.new(user_params)
 
-    @user.user_name = params[:user][:user_name]
-  	@user.email = params[:user][:email]
-    @user.password = params[:user][:password]
+    #@user.user_name = params[:user][:user_name]
+  	#@user.email = params[:user][:email]
+    #@user.password = params[:user][:password]
 
-     if @user.save
-        session[:user_id] = @user.id
-        #grab user id and set it to session[:user_id] has to login
+    if @user.save
+      session[:user_id] = @user.id
+      #grab user id and set it to session[:user_id] has to login
 
-        redirect_to root_path
+      redirect_to root_path
 
     else
       flash[:errors] = @user.errors.full_messages
 
       redirect_to new_user_path
     end
+  end
 
    def edit
-    @user = User.find_by(user_name: params[:user_name])
-  end
+    @user = current_user
+     #@user = User.find(user_name: params[:id])
+   end
 
    def update
-    @user = User.find(params[:id])
-    if @user.update(user_params)
+    @user = current_user
+     if @user.update(user_params)
       # Handle a successful update.
-    else
+        redirect_to @user
+     else
       render 'edit'
-    end
+     end
   end
 
-  end
 
   private
 
     def user_params
-      params.require(:user).permit(:user_name, :password)
+      params.require(:user).permit(:user_name, :email)
     end
-
 
 end

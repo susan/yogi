@@ -1,0 +1,10 @@
+<h3> Hi, <%=  @user.user_name%>. Welcome to Yogi!</h3>
+
+<h3> View all your <%= link_to "Routines", routines_url %> </h3>
+
+</br>
+</br>
+<p> Profile details are below: </p>
+<p> Username: <%= @user.user_name %> </p>
+<p> Email: <%= @user.email %> </p>
+<p> <%=link_to "edit your profile", edit_user_path(current_user) %></p>
