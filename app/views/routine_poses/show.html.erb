@@ -1,4 +1,3 @@
 <h3><%=link_to @routine_pose.yoga_pose.name, @routine_pose %></h3>
-<!--
-<%= button_to “Delete”, routine_pose_path(user, yoga_pose), method: :delete %>
-tin -->
+
+<%= button_to "remove #{@routine_pose.yoga_pose.name} from your #{@routine_pose.routine.name} routine", routine_pose_path, method: :delete %>

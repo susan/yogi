@@ -3,7 +3,7 @@
 <ul>
 <% @routine.routine_poses.each do |routine_pose| %>
 <li><%= link_to routine_pose.yoga_pose.name, routine_pose.yoga_pose %></li>
-<%= link_to "remove pose", routine_pose_url %>
+<%= link_to "remove pose", routine_pose_url(routine_pose) %>
 <% end %>
 </ul>
 

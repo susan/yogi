@@ -30,8 +30,15 @@ class RoutinePosesController < ApplicationController
   end
 
   def destroy
+    find_routine_pose
     @routine_pose.destroy
-    redirect to routines_url
+    redirect_to routine_url(@routine_pose.routine)
+    #we only have access here to @routine_pose
+    #can go back to routine page and ask for @routine_pose.routine
+    #it will still have @routine_pose until we hit end
+    #in the method
+    #we are retrieving from it the routine object so we will
+    #end up at routine show page
   end
 
 
