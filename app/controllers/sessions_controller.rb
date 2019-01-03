@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-
+  ##before_action :authentication required
   def new
   end
 
@@ -18,6 +18,7 @@ class SessionsController < ApplicationController
 
   def destroy
     reset_session
+    redirect_to root_path
   end
 
 

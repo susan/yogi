@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-
+  ##before_action :authentication required
   def new
   	@user = User.new
   end
@@ -15,7 +15,7 @@ class UsersController < ApplicationController
     @user.user_name = params[:user][:user_name]
   	@user.email = params[:user][:email]
     @user.password = params[:user][:password]
-
+     #can't use strong params becuase it excludes password so assign one by one
     if @user.save
       session[:user_id] = @user.id
       #grab user id and set it to session[:user_id] has to login

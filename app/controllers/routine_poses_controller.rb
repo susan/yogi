@@ -15,6 +15,7 @@ class RoutinePosesController < ApplicationController
       redirect_to(@routine_pose.routine)
     	#redirect_to(@routine_pose.yoga_pose)
     	#redirect to yoga_pose show page
+      #could have done @routine_pose = RoutinePose.create(routine_pose_params)
    end
 
   def edit

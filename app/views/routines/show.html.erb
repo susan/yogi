@@ -2,14 +2,22 @@
 <h3><%=@routine.name %></h3>
 <ul>
 <% @routine.routine_poses.each do |routine_pose| %>
-<li><%= link_to routine_pose.yoga_pose.name, routine_pose.yoga_pose %></li>
-<%= link_to "remove pose", routine_pose_url(routine_pose) %>
+<li><%= link_to routine_pose.yoga_pose.name, routine_pose.yoga_pose%>  </li>
+	<li align=center><%= link_to "remove pose", routine_pose_url(routine_pose) %> </li>
+
+
 <% end %>
 </ul>
 
-<%= link_to "add to list", new_routine_pose_url(@routine) %>
+<%= link_to "add poses to routine", new_routine_pose_url(@routine) %>
+</br>
+</br>
+</br>
+<%= link_to "see all my routines", routines_path %>
 </br>
 </br>
 <%= link_to "change routine name", edit_routine_path(@routine) %>
 </br>
-<%= link_to "see all my routines", routines_path %>
+
+<%= button_to "delete #{@routine.name} routine", routine_path(@routine), method: :delete %>
+

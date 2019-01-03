@@ -4,9 +4,11 @@
 <%  @routines.each do |routine| %>
  <li>
  	<%= link_to routine.name, routine_path(routine) %>
- 	<%= button_to "delete #{routine.name}", routine_path(routine), method: :delete %>
+
  </li>
 <% end %>
+</br>
+</br>
   <%=link_to "create new routine", new_routine_path %>
 </br>
 
