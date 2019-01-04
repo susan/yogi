@@ -9,8 +9,14 @@ class RoutinesController < ApplicationController
 	end
 
 	def show
-    find_routine
-	end
+    @routine = find_routine
+    if current_user.routines.include?(@routine)
+      @routine = find_routine
+    else
+      redirect_to routines_path
+    end
+    end
+
 
 	def new
   @routine = Routine.new
@@ -31,6 +37,11 @@ class RoutinesController < ApplicationController
 
   def edit
     find_routine
+    if current_user.routines.include?(@routine)
+      @routine = find_routine
+    else
+      render 'edit'
+    end
   end
 
   def update
