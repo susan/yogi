@@ -1,0 +1,7 @@
+<%= form_for @yoga_pose do |f| %>
+<%= f.text_field :name, placeholder: 'Add a name for your yoga pose!', class: 'form-control' %>
+<%= f.text_field :description, placeholder: 'Add a description for your yoga pose!', class: 'form-control' %>
+<%= f.text_field :image_url, placeholder: 'Add an URL for your yoga pose!', class: 'form-control' %>
+<%= f.text_field :difficulty_level, placeholder: 'Add a diffulty level from 1 to 3 for your yoga pose!', class: 'form-control' %>
+<%= f.collection_select :body_area_id, @body_areas, :id, :name %>
+<% end %>

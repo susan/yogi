@@ -20,4 +20,9 @@ class YogaPose < ApplicationRecord
       end
    end
 
+   def add_likes
+  self.increment(:likes)
+  self.save
+ end
+
 end

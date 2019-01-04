@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 2018_12_21_153529) do
     t.text "description"
     t.integer "difficulty_level"
     t.string "img_url"
+    t.integer "likes"
     t.integer "body_area_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

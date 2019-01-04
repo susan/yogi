@@ -18,6 +18,7 @@ class YogaPosesController < ApplicationController
 
   def new
   	 @yoga_pose = YogaPose.new
+     @body_areas = BodyArea.all
   end
 
   def create
@@ -32,6 +33,7 @@ class YogaPosesController < ApplicationController
   end
 
   def edit
+    @body_areas = BodyArea.all
   	find_pose
   end
 
@@ -45,6 +47,12 @@ class YogaPosesController < ApplicationController
   	   render :edit
   	end
   end
+
+  def incrementLikes
+    @yoga_pose = YogaPose.find(params[:id])
+    @yoga_pose.add_likes
+    redirect_to @yoga_pose
+ end
 
 # def index
 #   if params[:body_area]
@@ -61,7 +69,7 @@ class YogaPosesController < ApplicationController
   end
 
   def yoga_pose_params
-     params.require(:yoga_pose).permit(:name, :description, :img_url, :body_area_id, :search)
+     params.require(:yoga_pose).permit(:name, :description, :img_url, :body_area_id, :difficulty_level, :likes, :search)
   end
 
 end

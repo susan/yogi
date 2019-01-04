@@ -7,8 +7,15 @@
 <div class="card-content">            <!-- card text -->
   <h3><%= @yoga_pose.name %></h3>
         <p>Brief description: <%= @yoga_pose.description %></p>
-      </br>
+         </br>
         <p>Level of difficulty: <%=@yoga_pose.difficulty_level %></p>
+      </br>
+        <p>Number of Likes: <%=@yoga_pose.likes %></p>
+        <p> <%= button_to "like a yoga pose", "/yoga_poses/#{@yoga_pose.id}/likes" %> </p>
+      </br>
+        <p> <%= link_to "Edit Yoga Pose information", edit_yoga_pose_path(@yoga_pose) %></p>
+
+
     </div>
   </div>
   <div class="col s12">

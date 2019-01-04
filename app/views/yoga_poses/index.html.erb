@@ -1,7 +1,12 @@
 
 <h2>Yoga Poses</h2>
 
-<h4> Search by Body Area</h4>
+
+
+<%= link_to "Add your favorite yoga pose to the database", new_yoga_pose_url(@yoga_pose) %>
+</br>
+</br>
+<h4> Search Yoga Poses by Body Area</h4>
 <%= form_tag(yoga_poses_path, method: :get) do %>`
 <%= collection_select :body_area, :id, @bodies, :id, :name, selected: @body.id %>
 <%#= text_field_tag(:search, params[:search]) %>
@@ -11,6 +16,10 @@ can use collection_select vs f.collection_select with simple form select("search
 <% end %>
 
 
+</br>
+</br>
+
+<h2> List of all Yoga Poses</h2>
 <ul>
 <% @yoga_poses.each do |pose| %>
 <li>
