@@ -25,4 +25,8 @@ class YogaPose < ApplicationRecord
   self.save
  end
 
+ def self.popular_poses
+    YogaPose.all.order('likes desc').limit(5).to_a
+  end
+
 end

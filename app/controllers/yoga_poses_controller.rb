@@ -10,6 +10,7 @@ class YogaPosesController < ApplicationController
       @yoga_poses = YogaPose.all
       @body = BodyArea.first
     end
+    @yogaTop = YogaPose.popular_poses
   end
 
   def show
@@ -67,6 +68,10 @@ class YogaPosesController < ApplicationController
   def find_pose
     @yoga_pose = YogaPose.find(params[:id])
   end
+
+
+
+
 
   def yoga_pose_params
      params.require(:yoga_pose).permit(:name, :description, :img_url, :body_area_id, :difficulty_level, :likes, :search)
