@@ -1,7 +1,15 @@
 class YogaPosesController < ApplicationController
 
   def index
-    @yoga_poses = YogaPose.search(params[:search])
+     #@yoga_poses = YogaPose.search(params[:search])
+    @bodies = BodyArea.all
+    if params[:body_area]
+      @body = BodyArea.find(params[:body_area][:id])
+      @yoga_poses = @body.yoga_poses
+    else
+      @yoga_poses = YogaPose.all
+      @body = BodyArea.first
+    end
   end
 
   def show

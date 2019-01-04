@@ -1,5 +1,5 @@
 class RoutinesController < ApplicationController
-
+  before_action :authentication, only: [:index, :new, :show, :create]
 	def index
 		if current_user
       @routines = current_user.routines
